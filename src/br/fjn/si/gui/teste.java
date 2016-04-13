@@ -6,10 +6,10 @@ import br.fjn.si.locadora.*;
 public class teste {
 
 	public static void main(String[] args) {
-		RepositorioJogo rep = new RepositorioJogoArray(100);
+		IRepositorioJogo rep = new RepositorioJogoArray();
 		Locadora jogo = new Locadora(rep);
 
-		RepositorioCliente rep2 = new RepositorioClienteArray(100);
+		IRepositorioCliente rep2 = new RepositorioClienteArray();
 		Locadora cliente = new Locadora(rep2);
 
 		Endereco e = new Endereco();
@@ -22,25 +22,34 @@ public class teste {
 		d.setCep("53438");
 
 		jogo.cadastraJogo(new Jogo("hallo 5", "Tiro e açao", "XBOXONE e pc",
-				2015, "001"));
+				2015));
 
-		jogo.cadastraJogo(new Jogo("fifa 16", "Esportes", "PS4&XBOXONE", 2015,
-				"002"));
+		jogo.cadastraJogo(new Jogo("fifa 16", "Esportes", "PS4&XBOXONE", 2015));
 
-		jogo.cadastraJogo(new Jogo("fifa 17", "Esportes", "PS4&XBOXONE", 2016,
-				"003"));
+		jogo.cadastraJogo(new Jogo("fifa 17", "Esportes", "PS4&XBOXONE", 2016));
 
-		jogo.cadastraJogo(new Jogo("gta v", "açao e aventura", "PS4&XBOXONE",
-				2015, "004"));
+		jogo.cadastraJogo(new Jogo("gta v", "açao e aventura", "PS4&XBOXONE", 2014));
 
 		cliente.cadastraCliente(new Cliente("Gabriel", e, "(81)95555-8888",
 				"150", 19));
 		cliente.cadastraCliente(new Cliente("Daniel", d, "89654-4454", "196",
 				19));
 
-		System.out.println(jogo.procurarJogo("004"));
+		System.out.println(jogo.procurarJogo("fifa 16"));
+		System.out.println(jogo.getPlataforma("fifa 16"));
 		System.out.println(cliente.procurarCliente("196"));
-		System.out.println(jogo.procurarJogo("006"));
+		System.out.println(jogo.procurarJogo("hallo 5"));
+		
+		
+		cliente.removerCliente("196");
+		jogo.removeJogo("fifa 16");
+		
+		System.out.println("===========depois da atualizacao==========");
+		
+		System.out.println(jogo.procurarJogo("fifa 16"));
+		
+		System.out.println(cliente.procurarCliente("196"));
+		
 
 	}
 }

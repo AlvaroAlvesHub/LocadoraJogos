@@ -1,98 +1,63 @@
 package br.fjn.si.dados;
 
+import java.util.ArrayList;
+
 import br.fjn.si.locadora.Cliente;
 
-public class RepositorioClienteArray implements RepositorioCliente {
-	private Cliente[] clientes;
-	private int pos;
+public class RepositorioClienteArray implements IRepositorioCliente {
 
-	public RepositorioClienteArray(int tamanho) {
-		clientes = new Cliente[tamanho];
-		pos = 0;
+	ArrayList<Cliente> clientes;
+
+	public RepositorioClienteArray() {
+		clientes = new ArrayList<>();
 	}
 
-	public Cliente procurar(String cpf) {
-		Cliente resposta = null;
-		int i = this.getPos(cpf);
-		if (i == this.pos) {
-			System.out.println("Cliente nao encontrada");
-		} else {
-			resposta = this.clientes[i];
+	@Override
+	public void cadastrar(Cliente cliente) {
+		if (!existe(cliente.getCpf())) {
+			clientes.add(cliente);
 		}
-		return resposta;
-
-	}
-
-	private int getPos(String cpf) {
-
-		String n;
-		boolean achou = false;
-		int i = 0;
-		while ((!achou) && (i < this.pos)) {
-			n = clientes[i].getCpf();
-			if (n.equals(cpf)) {
-				achou = true;
-			} else {
-				i = i + 1;
-			}
-		}
-		return i;
-
-	}
-
-	public void remover(String cpf) {
-		int i = this.getPos(cpf);
-		this.pos = this.pos - 1;
-		this.clientes[i] = this.clientes[this.pos];
-		this.clientes[this.pos] = null;
-
-	}
-
-	public boolean existe(String cpf) {
-		int i = this.getPos(cpf);
-		return (i != this.pos);
-	}
-
-	public void cadastrar(Cliente nome) {
-		clientes[pos] = nome;
-		pos = pos + 1;
-
-	}
-
-	public void atualizar(Cliente nome) {
-		int i = this.getPos(nome.getNome());
-		if (i == this.pos) {
-			System.out.println("Cliente nao encontrada");
-		} else {
-			this.clientes[i] = nome;
-		}
-
-	}
-
-	private int getPos(Cliente cpf) {
-
-		String n;
-		boolean achou = false;
-		int i = 0;
-		while ((!achou) && (i < this.pos)) {
-			n = clientes[i].getCpf();
-			if (n.equals(cpf)) {
-				achou = true;
-			} else {
-				i = i + 1;
-			}
-		}
-		return i;
 
 	}
 
 	@Override
-	public void remover2(Cliente nome) {
-		int i = this.getPos(nome);
-		this.pos = this.pos - 1;
-		this.clientes[i] = this.clientes[this.pos];
-		this.clientes[this.pos] = null;
+	public Cliente procurar(String cpf) {
+		for (Cliente cliente : clientes) {
+			if (cpf.equals(cliente.getCpf())) {
+				return cliente;
+			}
 
+		}
+		return null;
 	}
 
+	@Override
+	public void remover(String cpf) {
+		if (existe(cpf)) {
+			clientes.remove(procurar(cpf));
+		}
+	}
+
+	@Override
+	public void atualizar(Cliente cliente) {
+		if (existe(cliente.getCpf())) {
+			int i = 0;
+			for (Cliente c : clientes) {
+				if (c.equals(cliente)) {
+					clientes.add(i, cliente);
+					break;
+				}
+				i++;
+			}
+
+		}
+	}
+
+	@Override
+	public boolean existe(String cpf) {
+		if (procurar(cpf) != null) {
+			return true;
+		}
+		return false;
+	}
 }

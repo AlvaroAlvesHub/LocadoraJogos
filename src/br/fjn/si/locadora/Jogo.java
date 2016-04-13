@@ -5,25 +5,18 @@ public class Jogo {
 	private String genero;
 	private String plataforma;
 	private int ano;
-	private String id;
 
-	public Jogo(String titulo, String genero, String plataforma, int ano,
-			String id) {
+	public Jogo() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Jogo(String titulo, String genero, String plataforma, int ano) {
 
 		this.titulo = titulo;
 		this.genero = genero;
 		this.plataforma = plataforma;
 		this.ano = ano;
-		this.id = id;
 
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getTitulo() {
@@ -52,6 +45,22 @@ public class Jogo {
 
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	@Override
+	public String toString() {
+		return "Jogo [titulo=" + titulo + ", plataforma=" + plataforma + "]";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Jogo) {
+			Jogo j = (Jogo) obj;
+			if (j.getTitulo().equals(titulo)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

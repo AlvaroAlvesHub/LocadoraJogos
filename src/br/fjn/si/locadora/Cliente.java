@@ -60,4 +60,22 @@ public class Cliente extends Pessoa {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Cliente [nome=" + nome + ", endereco=" + endereco + ", cpf="
+				+ cpf + "]";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Cliente) {
+			Cliente c = (Cliente) obj;
+			if (c.getCpf().equals(cpf)) {
+				return true;
+			}
+
+		}
+		return false;
+
+	}
 }
