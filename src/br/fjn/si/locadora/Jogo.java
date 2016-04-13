@@ -1,13 +1,13 @@
 package br.fjn.si.locadora;
 
-public class Jogo {
+public class Jogo { // classe feita para o JavaBean
 	private String titulo;
 	private String genero;
 	private String plataforma;
 	private int ano;
 
 	public Jogo() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Jogo(String titulo, String genero, String plataforma, int ano) {

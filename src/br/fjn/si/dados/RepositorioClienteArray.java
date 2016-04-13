@@ -22,7 +22,7 @@ public class RepositorioClienteArray implements IRepositorioCliente {
 
 	@Override
 	public Cliente procurar(String cpf) {
-		for (Cliente cliente : clientes) {
+		for (Cliente cliente : clientes) { // utilização do foreach
 			if (cpf.equals(cliente.getCpf())) {
 				return cliente;
 			}
@@ -42,7 +42,7 @@ public class RepositorioClienteArray implements IRepositorioCliente {
 	public void atualizar(Cliente cliente) {
 		if (existe(cliente.getCpf())) {
 			int i = 0;
-			for (Cliente c : clientes) {
+			for (Cliente c : clientes) { // utilização do foreach
 				if (c.equals(cliente)) {
 					clientes.add(i, cliente);
 					break;

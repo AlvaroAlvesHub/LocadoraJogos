@@ -2,16 +2,17 @@ package br.fjn.si.locadora;
 
 public class Cliente extends Pessoa {
 
-	private String nome;
 	private Endereco endereco;
-	private String telefone;
-	private String cpf;
 
-	public Cliente(String nome, Endereco endereco, String telefone, String cpf,
-			int idade) {
-		super(idade);
+	public Cliente() {
+	
+	}
+
+	public Cliente(String nome, String telefone, String cpf, int idade,
+			Endereco endereco) {
+		super(nome, telefone, cpf, idade);
 		this.nome = nome;
-		this.endereco = endereco;
+
 		this.telefone = telefone;
 		this.cpf = cpf;
 

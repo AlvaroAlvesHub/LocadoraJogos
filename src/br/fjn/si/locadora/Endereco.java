@@ -5,6 +5,16 @@ public class Endereco {
 	private String numero;
 	private String cep;
 
+	public Endereco() {
+		// TODO Auto-generated constructor stub
+	}
+	public Endereco(String rua, String numero, String cep) {
+		this.rua = rua;
+		this.numero = numero;
+		this.cep = cep;
+
+	}
+
 	public String getRua() {
 		return rua;
 	}

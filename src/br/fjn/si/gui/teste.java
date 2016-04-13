@@ -30,25 +30,23 @@ public class teste {
 
 		jogo.cadastraJogo(new Jogo("gta v", "açao e aventura", "PS4&XBOXONE", 2014));
 
-		cliente.cadastraCliente(new Cliente("Gabriel", e, "(81)95555-8888",
-				"150", 19));
-		cliente.cadastraCliente(new Cliente("Daniel", d, "89654-4454", "196",
-				19));
-
-		System.out.println(jogo.procurarJogo("fifa 16"));
-		System.out.println(jogo.getPlataforma("fifa 16"));
-		System.out.println(cliente.procurarCliente("196"));
-		System.out.println(jogo.procurarJogo("hallo 5"));
+		cliente.cadastraCliente(new Cliente("Alvaro", "9999999", "1234", 38, new Endereco("rkjdljljgf", "2", "53204030")));
+		
+		//System.out.println(jogo.procurarJogo("fifa 16"));
+		//System.out.println(jogo.getPlataforma("fifa 16"));
+		//System.out.println(cliente.procurarCliente("1234"));
+		//System.out.println(jogo.procurarJogo("hallo 5"));
 		
 		
-		cliente.removerCliente("196");
-		jogo.removeJogo("fifa 16");
+		//cliente.removerCliente("1234");
+		//jogo.removeJogo("fifa 16");
+		//cliente.atualizarCliente(cliente);
 		
 		System.out.println("===========depois da atualizacao==========");
 		
 		System.out.println(jogo.procurarJogo("fifa 16"));
 		
-		System.out.println(cliente.procurarCliente("196"));
+		System.out.println(cliente.procurarCliente("1234"));
 		
 
 	}
